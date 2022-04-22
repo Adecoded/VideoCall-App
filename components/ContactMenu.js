@@ -1,29 +1,30 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 const items = [
   {
     
-    name:"Starred",
+    type:"Starred",
+    name:"Starred"
     
 },
 {
-  
+  type:"Contact",
   name:"Drey",
- photo: require("../assests")
+ photo: require("../assets/img1.jpg"),
   
 },
 {
-  
+  type:"Contact",
   name:"Annie",
-  
+  photo: require("../assets/img2.jpg"),
 },
   
 {
-  
+  type:"Contact",
   name:"David",
-  
+  photo: require("../assets/img3.jpg"),
   
 },
 ]
@@ -33,10 +34,15 @@ const ContactMenu = () => {
     {items.map((item, index) =>
 
       <View style={styles.row} key={index}>
-
+      {item.type == "Starred" ? (
       <View style={styles.starredIcon}>
-<AntDesign name='star' size={30} color="white" />
-      </View>
+      <AntDesign name="star" size={30} color="white" />
+      </View> ) :
+  (
+       <Image source={item.photo} style={styles.Image}/>
+       )
+    }
+      
       <Text style={styles.text}>
       {item.name}
       </Text>
@@ -71,4 +77,9 @@ paddingLeft:15,
 fontSize:18,
 
   },
+  Image:{
+    width:55,
+    height:55,
+    borderRadius:20,
+  }
 })
