@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import AntDesign from "react-native-vector-icons/AntDesign";
+import { TouchableOpacity } from 'react-native';
 
 const items = [
   {
@@ -32,14 +33,14 @@ const ContactMenu = () => {
   return (
     <View style={styles.container}>
     {items.map((item, index) =>
-
-      <View style={styles.row} key={index}>
+<TouchableOpacity>
+      <View style={styles.row}>
       {item.type == "Starred" ? (
       <View style={styles.starredIcon}>
       <AntDesign name="star" size={30} color="white" />
       </View> ) :
   (
-       <Image source={item.photo} style={styles.Image}/>
+       <Image source={item.photo} style={styles.Image} key={index}/>
        )
     }
       
@@ -47,6 +48,7 @@ const ContactMenu = () => {
       {item.name}
       </Text>
       </View>
+      </TouchableOpacity>
       )}
     </View>
   )
